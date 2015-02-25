@@ -1,0 +1,27 @@
+{
+  "name": "find-node-modules-down",
+  "version": "0.1.0",
+  "description": "Find all child node_modules directories",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test/test | faucet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/callumacrae/find-node-modules-down"
+  },
+  "author": "Callum Macrae <callum@macr.ae>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/callumacrae/find-node-modules-down/issues"
+  },
+  "homepage": "https://github.com/callumacrae/find-node-modules-down",
+  "dependencies": {
+    "graceful-fs": "^3.0.5",
+    "lodash": "^3.3.1"
+  },
+  "devDependencies": {
+    "faucet": "0.0.1",
+    "tape": "^3.5.0"
+  }
+}
