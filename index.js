@@ -15,12 +15,9 @@ function findModulesDown(dirPath) {
 		.filter(isDir)
 		.map(function (child) {
 			var modulesDown = findModulesDown(child);
-
-			if (path.basename(child) === 'node_modules') {
-				modulesDown.unshift(path.join(child));
-			}
-
-			return modulesDown;
+			return path.basename(child) === 'node_modules' ?
+				modulesDown.unshift(path.join(child)):
+				modulesDown;
 		})
 		.flattenDeep()
 		.value();
