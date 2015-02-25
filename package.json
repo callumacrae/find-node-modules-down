@@ -18,6 +18,7 @@
   "homepage": "https://github.com/callumacrae/find-node-modules-down",
   "dependencies": {
     "graceful-fs": "^3.0.5",
+    "is-directory": "^0.2.3",
     "lodash": "^3.3.1"
   },
   "devDependencies": {

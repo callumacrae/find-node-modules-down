@@ -3,6 +3,7 @@
 var fs = require('graceful-fs');
 var path = require('path');
 var _ = require('lodash');
+var isDir = require('is-directory');
 
 function findModulesDown(dirPath) {
 	if (!_.isString(dirPath)) {
@@ -10,21 +11,16 @@ function findModulesDown(dirPath) {
 	}
 
 	return _(fs.readdirSync(dirPath))
+		.map(_.curry(_.ary(path.join, 2), 2)(dirPath))
+		.filter(isDir)
 		.map(function (child) {
-			return path.join(dirPath, child);
-		})
-		//.map(_.curry(path.join, 2)(dirPath)) // lodash/lodash#998
-		.filter(function (child) {
-			return fs.lstatSync(child).isDirectory();
-		})
-		.map(function (child) {
-			var modules = [];
+			var modulesDown = findModulesDown(child);
 
 			if (path.basename(child) === 'node_modules') {
-				modules.push(path.join(child));
+				modulesDown.unshift(path.join(child));
 			}
 
-			return modules.concat(findModulesDown(child));
+			return modulesDown;
 		})
 		.flattenDeep()
 		.value();
