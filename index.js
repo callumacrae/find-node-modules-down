@@ -11,7 +11,7 @@ function findModulesDown(dirPath) {
 	}
 
 	return _(fs.readdirSync(dirPath))
-		.map(_.curry(_.ary(path.join, 2), 2)(dirPath))
+		.map(_.curry(_.ary(path.join, 2), 2)(dirPath)) // Get full path
 		.filter(isDir)
 		.map(function (child) {
 			var modulesDown = findModulesDown(child);
