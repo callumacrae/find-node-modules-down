@@ -1,6 +1,6 @@
 {
   "name": "find-node-modules-down",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Find all child node_modules directories",
   "main": "index.js",
   "scripts": {
